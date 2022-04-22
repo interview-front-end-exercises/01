@@ -4,13 +4,14 @@
 
 const numberOfOccurences = (str) => {
 
-    const chars = str.split('').sort();
-    let charsCount = [];
+    const removeWhiteSpace = str.replaceAll(' ', '')
+    const chars = removeWhiteSpace.split('').sort();
+    let occurrences = [];
 
     let reduceCallbackFn = (prev, cur) => {
         /** prev[cur] - object key */
         /** (prev[cur] || 0) + 1 - key value*/
-        console.log((prev[cur] || 0) + 1)
+     
         /** add one to either the value of prev[cur]
          * or to zero for each iteration of the same
          * object key
@@ -22,9 +23,17 @@ const numberOfOccurences = (str) => {
 
     /** First value of prev is the new object from below */
     /** cur is each item from the chars array */
-    charsCount = chars.reduce(reduceCallbackFn, {});
+    occurrences = chars.reduce(reduceCallbackFn, {});
 
-    return charsCount;
+    /** remove any empty items */
+    // for (let occ in occurrences){
+
+    //     if (occ === ' ') {
+    //         delete occurrences[occ];
+    //     }
+    // }
+
+    return occurrences;
 }
 
-console.log(numberOfOccurences('shannon'));
+console.log(numberOfOccurences('there once was a man from nantucket'));
