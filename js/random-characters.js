@@ -1,6 +1,5 @@
-const randomChars = (length) => {
+const randomChars = (length, chars) => {
 
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charsArr = chars.split('');
     let randos = [];
 
@@ -12,4 +11,5 @@ const randomChars = (length) => {
  
 }
 
-console.log(randomChars(14));
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+console.log(randomChars(17, chars));

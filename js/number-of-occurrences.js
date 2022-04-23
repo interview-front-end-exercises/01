@@ -1,7 +1,17 @@
+class ClassFunctions {
+
+    static removeAllWhiteSpace = (str) => {
+        return str.replaceAll(' ', '');
+    }
+   
+    static convertStringToArray = (str) => {
+        return str.split('');
+    }
+}
+
 /**
  * Get the number of occurences of each letter in a string
  */
-
 const numberOfOccurences = (str) => {
 
     const removeWhiteSpace = str.replaceAll(' ', '')
@@ -9,6 +19,7 @@ const numberOfOccurences = (str) => {
     let occurrences = [];
 
     let reduceCallbackFn = (prev, cur) => {
+        
         /** prev[cur] - object key */
         /** (prev[cur] || 0) + 1 - key value*/
      
@@ -36,4 +47,40 @@ const numberOfOccurences = (str) => {
     return occurrences;
 }
 
-console.log(numberOfOccurences('there once was a man from nantucket'));
+const phrase = 'there once was a man from nantucket';
+// console.log(numberOfOccurences(phrase));
+
+/**
+ * Count the number of occurences based off a given value
+ */
+
+const occursOfGivenValue = (str, key) => {
+
+    /** Remove any spaces in the string, using a class to show abstraction */
+    const replaceWhitespaces = ClassFunctions.removeAllWhiteSpace(str);
+
+    /** Convert string to an array of items */
+    const chars = ClassFunctions.convertStringToArray(replaceWhitespaces);
+
+    /** Storage for occurences */
+    let occurrences = [];
+
+    /** Filter out any character that aren't equal to the key */
+    occurrences = chars.filter((itm, idx, arr) => {
+        return itm === key;
+    })
+    /** 
+     * chain a reducer to the filter function, so we can 
+     * find the number of occurences of the given key
+     */
+    .reduce((prev, char) => {
+        prev[char] = (prev[char] || 0) + 1;
+
+        return prev;
+    }, []);
+ 
+    return occurrences;
+
+}
+
+console.log(occursOfGivenValue(phrase, 'n'));
