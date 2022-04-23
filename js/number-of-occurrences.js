@@ -54,7 +54,7 @@ const phrase = 'there once was a man from nantucket';
  * Count the number of occurences based off a given value
  */
 
-const occursOfGivenValue = (str, key) => {
+const occursOfGivenValue = (str, keys) => {
 
     /** Remove any spaces in the string, using a class to show abstraction */
     const replaceWhitespaces = ClassFunctions.removeAllWhiteSpace(str);
@@ -67,7 +67,19 @@ const occursOfGivenValue = (str, key) => {
 
     /** Filter out any character that aren't equal to the key */
     occurrences = chars.filter((itm, idx, arr) => {
-        return itm === key;
+       
+        /** when keys is an array */
+        let foundKey = '';
+
+        for (let i = 0; i < keys.length; i++) {
+            if (itm === keys[i]) {
+                foundKey = keys[i];
+            }
+        }
+        return foundKey;
+
+        /** when keys is a single character */
+        // return itm === keys;
     })
     /** 
      * chain a reducer to the filter function, so we can 
@@ -83,4 +95,4 @@ const occursOfGivenValue = (str, key) => {
 
 }
 
-console.log(occursOfGivenValue(phrase, 'n'));
+console.log(occursOfGivenValue(phrase, ['n','o']));
