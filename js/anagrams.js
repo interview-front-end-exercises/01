@@ -35,4 +35,4 @@ const anagrams = (str1, str2) => {
     return true;
 }
 
-console.log(anagrams('blobber', 'blobber'));
+// console.log(anagrams('blobber', 'blobber'));

@@ -4,21 +4,21 @@
  * Expected Output: d,o,do,g,dg,og,dog
  */
 
-const substrings = (str) => {
-    str = str.replace(' ', '');
-    let array1 = [];
+const strCombos = (str) => {
 
-    for (let x = 0, y = 0; x < str.length; x++, y++) {
-        array1[x] = str.substr(x, y); 
+    let combos = [];
+
+    for (let i = 0; i < str.length; i++) {
+        for (let j = i + 1; j < str.length + 1; j++) {
+            combos.push(str.substr(i , j));
+        }
     }
 
-    let combi = [];
-    let temp= "";
-    let slent = Math.pow(2, array1.length);
+    return combos;
 }
 
-// console.log(substrings('dog'));
-const sortStr = 'webmaster';
-console.log('sort', sortStr.split('').sort().join(''));
+console.log(strCombos('dog'));
+
+
 
 

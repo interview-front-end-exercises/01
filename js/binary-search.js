@@ -1,36 +1,3 @@
-// const search = (nums, key) => {
-
-//     nums.sort((a, b) => {
-//         return a - b;
-//     })
-
-//     let binaryFind = 0;
-    
-//     binaryFind = nums.reduce((prev, curr, idx, arr) => {
-//         const high = nums[nums.length - 1];
-//         const low = nums[0];
-//        // const middleVal = Math.floor((low + high) / 2);
-//         // prev = arr;
-//         const middleIndex = Math.floor((low + high) / 2);
-//         // console.log(middleIndex, prev);
-
-//         if (prev[middleIndex] === key) {
-//             return key;
-//         }
-
-//         // prev.splice(0, middleIndex);
-//         // debugger
-//         // if (arr.length === 1) {
-//         //     return arr[idx];
-//         // }
-//         return prev;
-        
-//     },[])
-
-
-//     // console.log(low, middle, high);
-// }
-
 /**
  * Sort an array using the binary search method
  * 
@@ -89,4 +56,33 @@ const binaryFindWithRecursion = (nums, key) => {
 
 const arr = [3,4,99,86,1,8,23,9,11];
 
-console.log('binary find,', binaryFindWithRecursion(arr, 8))
+// console.log('binary find,', binaryFindWithRecursion(arr, 8));
+
+const te = (ar, find) => {
+
+    ar.sort((a,b) => {
+        return a -b;
+    });
+
+    let middleIdx = Math.floor(ar.length / 2);
+
+    for (let i = 0; i < ar.length; i++) {
+
+        if (ar[middleIdx] === find) {
+            return true;
+        }
+
+        if (ar.length === 1 && ar[middleIdx] !== find) {
+            return false;
+        }
+
+        if (ar[middleIdx] > find) {
+            return te(ar.splice(0, middleIdx), find);
+        } else {
+            return te(ar.splice(middleIdx), find);
+        }
+    }
+
+}
+
+console.log(te(arr, 88));

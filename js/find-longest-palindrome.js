@@ -55,3 +55,34 @@ const palindromes = (strs) => {
 
 console.log(palindromes('there once was a man from nantucket banana his face was longer than a bucket'));
 // console.log(longestSinglePalindrome('bestdealeverer'));
+
+// const findPs = (str) => {
+//     const words = str.split(' ');
+//     const foundPs = [];
+
+//     words.map((itm) => {
+//         for (let i = 0; i < itm.length; i++) {
+           
+//             if (isPali(itm.substr(i, itm.length))) {
+//                 foundPs.push(
+//                     {
+//                         key: itm.substr(i, itm.length),
+//                         length: itm.substr(i, itm.length).length
+//                     }
+//                 )
+//             }
+//         }
+//     });
+//         foundPs.sort((a,b) => {
+//             return b.length - a.length;
+//         })
+//     return foundPs[0];
+// }
+
+// const isPali = (str) => {
+
+//     let rev = str.split('').reverse().join('');
+//     return rev === str;
+// }
+
+// console.log(findPs('there once was a man from nantucket banana his face was longer than a bucket'));
