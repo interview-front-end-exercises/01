@@ -56,6 +56,26 @@ class Change {
 
 const change = new Change();
 const cash = 500;
-const price = 173;
+const price = 373;
 const denoms = [200, 100, 50, 25, 20, 10, 5, 1];
-console.log('simpler', change.calculatorSimpler(cash, price, denoms));
+// console.log('simpler', change.calculatorSimpler(cash, price, denoms));
+
+const changeTest = (cash, price, denoms) => {
+
+    let returnVal = cash - price;
+    let change = {};
+    let amountOfDenoms;
+
+    denoms.forEach(itm => {
+        amountOfDenoms = Math.floor(returnVal / itm);
+        if (amountOfDenoms > 0) {
+
+            change[itm] = amountOfDenoms;
+            returnVal = returnVal % itm;
+        }
+    })
+
+    return change;
+}
+
+console.log('simpler', changeTest(cash, price, denoms));

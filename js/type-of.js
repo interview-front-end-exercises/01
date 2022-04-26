@@ -7,8 +7,17 @@
 
 const dataTypes = (types) => {
 
+    let type = '';
+
     return types.map((itm, idx, arr) => {
-        return `${ itm } is a type of: ${ typeof itm }`
+
+        if(Array.isArray(itm)) {
+            type = 'Array';
+        } else {
+            type = typeof itm;
+        }
+
+        return `${ itm } is a type of: ${ type }`
     })
 }
 
@@ -16,6 +25,8 @@ const dataTypes = (types) => {
  * so JavaScript assigns the default value of 'undefined,'
  * which is a type of 'undefined' */
 let undefinedVar;
-const types = [{}, ()=>{}, 1, 'one', true, undefinedVar];
+let arr = [];
+const types = [{}, ()=>{}, 1, 'one', true, undefinedVar, arr];
 
 console.log(dataTypes(types));
+
