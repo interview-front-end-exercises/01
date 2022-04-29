@@ -17,16 +17,25 @@
  let encryptedList = [];
 
 const encrypt = (arr, shiftAmount) => {
-
-    // encryptedList = [...alphaList];
+  
+    /**
+     * Immutable copy of alphaList
+     */
+    encryptedList = [...arr];
 
     for (let i = 0; i < arr.length; i++) {
-    //    console.log(i, (i + shiftAmount) % 26);
-       encryptedList.push(arr.splice(i + shiftAmount % 26));
+
+        /** Current array item */
+        const currItem = arr[i];
+
+        /** Remove current item from array */
+        encryptedList.splice(i, 1);
+
+        /** Add the current item in the new array position */
+        encryptedList.splice((i + shiftAmount) % arr.length, 0, currItem);
     }
 
     return encryptedList;
-
 }
 
 
